@@ -1,4 +1,6 @@
+import imp
 from Piso import Piso
+from Patron import Patron
 from ListaPatrones import ListaPatrones
 
 class listasimple():
@@ -70,13 +72,15 @@ class listasimple():
             print("Columnas: " , tmp.columnas)
             print("Costo Flip:", tmp.flip_costo)
             print("Costo Slide:", tmp.slide_costo)
+            print("Nombre del patron: ", tmp.cod)
+            print("Patron: ", tmp.cadena)
             tmp = tmp.siguiente    
 
     def mostrarpatron(self):
         tmp = self.inicio
         while tmp is not None:
-            print("Nombre del patron: ", tmp.codigo)
-            print("Patron: ", tmp.patron)
+            print("Nombre del patron: ", tmp.cod)
+            print("Patron: ", tmp.cadena)
             tmp = tmp.siguiente    
 
     def buscarPiso(self,nombre):
@@ -87,8 +91,16 @@ class listasimple():
             tmp = tmp.siguiente
         return None
 
-    def agregar(self, nombre, r, c, f, s):
-        nuevoPiso = Piso(nombre, r, c, f,s)
+    def buscarCodigo(self,cod):
+        tmp = self.inicio
+        while tmp is not None:
+            if tmp.cod == cod:
+                return tmp 
+            tmp = tmp.siguiente
+        return None
+
+    def agregar(self, nombre, r, c, f, s,cod,cadena):
+        nuevoPiso = Piso(nombre, r, c, f,s,cod,cadena)
         self.size +=1
         if self.inicio == None:
             self.inicio = nuevoPiso
@@ -97,6 +109,17 @@ class listasimple():
             while tmp.siguiente is not None:
                 tmp = tmp.siguiente
             tmp.siguiente = nuevoPiso
+
+    def agregarpatron(self, cod,cadena):
+        nuevoPatron = Piso(cod,cadena)
+        self.size +=1
+        if self.inicio == None:
+            self.inicio = nuevoPatron
+        else:
+            tmp = self.inicio
+            while tmp.siguiente is not None:
+                tmp = tmp.siguiente
+            tmp.siguiente = nuevoPatron
 
 
     def getpatron(self, codigo,patron):

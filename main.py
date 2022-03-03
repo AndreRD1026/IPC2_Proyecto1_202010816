@@ -9,6 +9,7 @@ tree = ''
 root = ''
 pisos = ''
 pisoss = listapisos()
+patrones = listapisos()
 
 
 def cargarArchivo(ruta):
@@ -25,20 +26,24 @@ def cargarArchivo(ruta):
             f = int(elemento.find('F').text)
             s = int(elemento.find('S').text)
             fila = r
-            pisoss.agregar(nombre,r,c,f,s)         
+            #pisoss.agregar(nombre,r,c,f,s)         
             piso = pisoss.buscarPiso(nombre)
-            piso.matrizpiso.agregarCoordenada(fila,c)
+            #piso.matrizpiso.agregarCoordenada(fila,c)
             for subelemento in elemento:
-                if subelemento.tag == "patron":
-                    codigo = str(subelemento.attrib['codigo'])
-                    patron = str(subelemento.text)
-                    #pisoss.patrones.getpatron(codigo,patron)
-                    #pisoss.agregar(codigo,patron)
+                for subsubelemento in subelemento:
+                    codigo = subsubelemento.attrib['codigo']
+                    buscarPatron = patrones.buscarCodigo(codigo)
+                    if buscarPatron is None:
+                        patron = str(subelemento.find('patron').text)
+                        #patrones.agregarpatron(codigo,patron)
+                        #pisoss.agregar(codigo,patron)
+                        #patron = patrones.buscarCodigo(codigo)
+            pisoss.agregar(nombre,r,c,f,s,codigo,patron)
         print("Pisos ingresados")
 
         pisoss.mostrarpiso()
-        #pisoss.mostrarpatron()
-        #pisoss.mostrarelementos()
+        #patrones.mostrarpatron()
+
 
 
 
