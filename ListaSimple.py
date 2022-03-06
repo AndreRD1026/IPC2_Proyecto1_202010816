@@ -1,7 +1,7 @@
 import imp
 from Piso import Piso
 from Patron import Patron
-from ListaPatrones import ListaPatrones
+#from ListaPatrones import ListaPatrones
 
 class listasimple():
     def __init__(self):
@@ -72,8 +72,8 @@ class listasimple():
             print("Columnas: " , tmp.columnas)
             print("Costo Flip:", tmp.flip_costo)
             print("Costo Slide:", tmp.slide_costo)
-            print("Nombre del patron: ", tmp.cod)
-            print("Patron: ", tmp.cadena)
+            #print("Nombre del patron: ", tmp.cod)
+            #print("Patron: ", tmp.cadena)
             tmp = tmp.siguiente    
 
     def mostrarpatron(self):
@@ -99,8 +99,8 @@ class listasimple():
             tmp = tmp.siguiente
         return None
 
-    def agregar(self, nombre, r, c, f, s,cod,cadena):
-        nuevoPiso = Piso(nombre, r, c, f,s,cod,cadena)
+    def agregar(self, nombre, r, c, f, s):
+        nuevoPiso = Piso(nombre, r, c, f,s)
         self.size +=1
         if self.inicio == None:
             self.inicio = nuevoPiso
@@ -111,7 +111,7 @@ class listasimple():
             tmp.siguiente = nuevoPiso
 
     def agregarpatron(self, cod,cadena):
-        nuevoPatron = Piso(cod,cadena)
+        nuevoPatron = Patron(cod,cadena)
         self.size +=1
         if self.inicio == None:
             self.inicio = nuevoPatron
@@ -122,7 +122,7 @@ class listasimple():
             tmp.siguiente = nuevoPatron
 
 
-    def getpatron(self, codigo,patron):
+    '''def getpatron(self, codigo,patron):
         nuevoPatron = ListaPatrones(codigo,patron)
         self.size +=1
         if self.inicio == None:
@@ -131,7 +131,18 @@ class listasimple():
             tmp = self.inicio
             while tmp.siguiente is not None:
                 tmp = tmp.siguiente
-            tmp.siguiente = nuevoPatron
+            tmp.siguiente = nuevoPatron '''
+
+ 
+    def getPiso(self,posicion):
+        contador = 1
+        tmp = self.inicio
+        while tmp is not None:
+            if contador is posicion:
+                return tmp
+            tmp = tmp.siguiente
+            contador +=1
+        return None
 
     
     def mostrarelementos(self):

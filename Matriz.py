@@ -1,7 +1,8 @@
 class Coordenada:
-    def __init__(self, fila, columna):
+    def __init__(self, fila, columna,cadena):
         self.fila = fila
         self.columna = columna
+        self.cadena = cadena
         self.etiqueta = None
         self.terminal = False
         self.up = None
@@ -60,8 +61,8 @@ class Matriz:
         self.c=0
 
 
-    def agregarCoordenada(self,fila,c):
-        nuevaCoordenada = Coordenada(fila,c)
+    def agregarCoordenada(self,fila,columna,cadena):
+        nuevaCoordenada = Coordenada(fila,columna,cadena)
         #insertando el nodo en la fila correspondiente
         efila = self.filas.getHeader(fila)
         if efila is None: #si no existe la fila todavía
@@ -88,16 +89,16 @@ class Matriz:
                     tmp.right = nuevaCoordenada
 
         #insertando el nodo en la columna correspondiente
-        ecolumna = self.columnas.getHeader(c)
+        ecolumna = self.columnas.getHeader(columna)
         if ecolumna is None: #si no existe la columna todavía
-            self.columnas.nuevoHeader(c)
-            self.columnas.getHeader(c).acceso = nuevaCoordenada
+            self.columnas.nuevoHeader(columna)
+            self.columnas.getHeader(columna).acceso = nuevaCoordenada
         else: #si la fila ya existe
             tmp = ecolumna.acceso
             if (nuevaCoordenada.columna < tmp.columna): #si hay que insertar al inicio
                 tmp.up = nuevaCoordenada
                 nuevaCoordenada.down = tmp
-                c.acceso = nuevaCoordenada
+                columna.acceso = nuevaCoordenada
             else:
                 while tmp.down is not None:
                     if nuevaCoordenada.fila < tmp.down.fila: #si hay que instertar al medio
@@ -118,7 +119,7 @@ class Matriz:
         while(tmp is not None):
             nodoTmp = tmp.acceso
             while(nodoTmp is not None):
-                print("[(",nodoTmp.fila, ", ", nodoTmp.columna)
+                print("[(",nodoTmp.fila, ", ", nodoTmp.columna, ",", nodoTmp.cadena, "]")
                 nodoTmp = nodoTmp.right
             tmp = tmp.siguiente
 
@@ -127,7 +128,7 @@ class Matriz:
         while(tmp is not None):
             nodoTmp = tmp.acceso
             while(nodoTmp is not None):
-                print("[(",nodoTmp.fila, ", ", nodoTmp.columna)
+                print("[(",nodoTmp.fila, ", ", nodoTmp.columna, nodoTmp.cadena, "]")
                 nodoTmp = nodoTmp.down
             tmp = tmp.siguiente      
 
