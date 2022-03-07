@@ -1,7 +1,6 @@
 import imp
 from Piso import Piso
 from Patron import Patron
-#from ListaPatrones import ListaPatrones
 
 class listasimple():
     def __init__(self):
@@ -120,18 +119,6 @@ class listasimple():
             while tmp.siguiente is not None:
                 tmp = tmp.siguiente
             tmp.siguiente = nuevoPatron
-
-
-    '''def getpatron(self, codigo,patron):
-        nuevoPatron = ListaPatrones(codigo,patron)
-        self.size +=1
-        if self.inicio == None:
-            self.inicio = nuevoPatron
-        else:
-            tmp = self.inicio
-            while tmp.siguiente is not None:
-                tmp = tmp.siguiente
-            tmp.siguiente = nuevoPatron '''
 
  
     def getPiso(self,posicion):

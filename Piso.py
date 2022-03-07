@@ -11,8 +11,6 @@ class Piso():
         self.columnas = c
         self.flip_costo = f
         self.slide_costo = s
-        #self.cod = cod
-        #self.cadena = cadena
         self.patrones = Listad_Patrones()
         self.coordenadas = Lista_Coordenadas()
         #self.matrizpiso = Matriz() #Matriz

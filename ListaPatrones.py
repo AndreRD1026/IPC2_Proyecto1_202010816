@@ -1,6 +1,6 @@
 from Patron import Patron
 
-class nodoDoblemente:
+class nodoDoble:
     def __init__(self,codigo = None, patrones=None, siguiente= None, anterior = None):
         self.codigo = codigo
         self.patrones = patrones
@@ -9,7 +9,7 @@ class nodoDoblemente:
 
 class Listad_Patrones:
     def __init__(self):
-        self.raiz = nodoDoblemente()
+        self.raiz = nodoDoble()
         self.ultimo = self.raiz
 
     def insertar(self,nuevonodo):
