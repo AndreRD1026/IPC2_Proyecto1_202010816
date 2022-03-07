@@ -1,7 +1,6 @@
 #from ListaPatrones import ListaPatrones
 from ListaPatrones import Listad_Patrones
 from Matriz import Matriz
-from ListaDobleCoordenada import ListaDoble
 from coordenada import Lista_Coordenadas
 
 class Piso(): 
